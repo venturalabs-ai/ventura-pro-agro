@@ -3,7 +3,12 @@ from datetime import UTC, date, datetime
 import pytest
 from pydantic import ValidationError
 
-from app.data_contracts import ClimateDailyContract, MunicipalityContract, ZarcWindowContract, validate_contract
+from app.data_contracts import (
+    ClimateDailyContract,
+    MunicipalityContract,
+    ZarcWindowContract,
+    validate_contract,
+)
 
 
 def test_municipality_contract_accepts_valid_ibge_record() -> None:
