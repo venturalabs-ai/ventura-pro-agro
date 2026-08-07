@@ -1,0 +1,492 @@
+{
+  "_meta": {
+    "fonte_calendarios": "Referência regional baseada em portarias do Zoneamento Agrícola de Risco Climático (ZARC/MAPA) e calendários agrícolas Embrapa/Conab. Para janela municipal oficial, consulte o Plantio Certo (Embrapa).",
+    "fonte_custos": "Valores de referência aproximados do mercado brasileiro (2025/2026, R$/ha), ordem de grandeza típica. Edite no módulo Custos.",
+    "regioes": {
+      "N": "Norte",
+      "NE": "Nordeste",
+      "CO": "Centro-Oeste",
+      "SE": "Sudeste",
+      "S": "Sul"
+    },
+    "lua_tradicao": {
+      "crescente": "Tradição popular: plantar na lua crescente favorece o desenvolvimento da parte aérea (folhas e frutos).",
+      "minguante": "Tradição popular: plantar na lua minguante favorece raízes e tubérculos.",
+      "qualquer": "Sem preferência tradicional relevante.",
+      "cheia": "Tradição popular: evitar podas e transplantes na lua cheia.",
+      "nova": "Tradição popular: evitar colheita de grãos na lua nova (maior umidade)."
+    }
+  },
+  "culturas": [
+    {
+      "slug": "soja",
+      "nome": "Soja",
+      "grupo": "Grãos",
+      "ciclo_dias": [100, 130],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [11, 12],
+        "NE": [11, 12],
+        "CO": [9, 12],
+        "SE": [10, 11],
+        "S": [9, 10]
+      },
+      "colheita_meses": { "CO": [1, 4], "SE": [1, 3], "S": [12, 3], "NE": [2, 4], "N": [2, 4] },
+      "riscos": ["seca no fechamento de palhada", "excesso de chuva na colheita", "ferrugem asiática"],
+      "clima_ideal": { "precip_mm_min": 80, "precip_mm_max": 200, "temp_min_c": 18, "temp_max_c": 32 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 60, "unidade": "sacas/ha" },
+      "preco_ref": 110,
+      "custos_ref_ha": { "sementes": 850, "fertilizantes": 1900, "defensivos": 1900, "manejo": 850, "total": 5500 }
+    },
+    {
+      "slug": "milho",
+      "nome": "Milho (1ª safra)",
+      "grupo": "Grãos",
+      "ciclo_dias": [110, 150],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [11, 12],
+        "NE": [3, 5],
+        "CO": [10, 12],
+        "SE": [9, 11],
+        "S": [8, 10]
+      },
+      "colheita_meses": { "CO": [2, 5], "SE": [1, 4], "S": [12, 3], "NE": [7, 9], "N": [3, 5] },
+      "riscos": ["seca na floração", "veranicos", "lagarta-do-cartucho"],
+      "clima_ideal": { "precip_mm_min": 70, "precip_mm_max": 180, "temp_min_c": 16, "temp_max_c": 32 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 150, "unidade": "sacas/ha" },
+      "preco_ref": 62,
+      "custos_ref_ha": { "sementes": 900, "fertilizantes": 1800, "defensivos": 1300, "manejo": 800, "total": 4800 }
+    },
+    {
+      "slug": "milho_safrinha",
+      "nome": "Milho 2ª safra (safrinha)",
+      "grupo": "Grãos",
+      "ciclo_dias": [100, 130],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "CO": [1, 2],
+        "SE": [1, 2],
+        "S": [1, 2],
+        "NE": [4, 6],
+        "N": [5, 6]
+      },
+      "colheita_meses": { "CO": [5, 7], "SE": [5, 7], "S": [5, 7], "NE": [9, 10], "N": [9, 10] },
+      "riscos": ["geada tardia no Sul", "seca no final do ciclo", "enfezamento"],
+      "clima_ideal": { "precip_mm_min": 60, "precip_mm_max": 160, "temp_min_c": 14, "temp_max_c": 30 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 110, "unidade": "sacas/ha" },
+      "preco_ref": 58,
+      "custos_ref_ha": { "sementes": 800, "fertilizantes": 1500, "defensivos": 1200, "manejo": 750, "total": 4250 }
+    },
+    {
+      "slug": "arroz",
+      "nome": "Arroz (irrigado)",
+      "grupo": "Grãos",
+      "ciclo_dias": [100, 130],
+      "saca_kg": 50,
+      "janelas_plantio": {
+        "N": [11, 1],
+        "NE": [12, 3],
+        "CO": [10, 12],
+        "SE": [10, 11],
+        "S": [9, 11]
+      },
+      "colheita_meses": { "S": [2, 4], "SE": [2, 4], "CO": [2, 4], "NE": [4, 7], "N": [3, 5] },
+      "riscos": ["frio na floração (Sul)", "brusone", "excesso de chuva na colheita"],
+      "clima_ideal": { "precip_mm_min": 100, "precip_mm_max": 300, "temp_min_c": 18, "temp_max_c": 33 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 70, "unidade": "sacas/ha" },
+      "preco_ref": 88,
+      "custos_ref_ha": { "sementes": 700, "fertilizantes": 1400, "defensivos": 1100, "manejo": 2000, "total": 5200 }
+    },
+    {
+      "slug": "feijao",
+      "nome": "Feijão (águas)",
+      "grupo": "Grãos",
+      "ciclo_dias": [70, 100],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [11, 12],
+        "NE": [3, 5],
+        "CO": [10, 11],
+        "SE": [10, 11],
+        "S": [9, 10]
+      },
+      "colheita_meses": { "CO": [1, 2], "SE": [1, 2], "S": [12, 1], "NE": [6, 8], "N": [2, 3] },
+      "riscos": ["excesso de chuva na floração", "seca", "mofo-branco"],
+      "clima_ideal": { "precip_mm_min": 60, "precip_mm_max": 180, "temp_min_c": 15, "temp_max_c": 28 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 28, "unidade": "sacas/ha" },
+      "preco_ref": 310,
+      "custos_ref_ha": { "sementes": 450, "fertilizantes": 900, "defensivos": 950, "manejo": 700, "total": 3000 }
+    },
+    {
+      "slug": "algodao",
+      "nome": "Algodão",
+      "grupo": "Fibras",
+      "ciclo_dias": [150, 190],
+      "saca_kg": 15,
+      "janelas_plantio": {
+        "N": [1, 3],
+        "NE": [2, 4],
+        "CO": [10, 12],
+        "SE": [10, 11],
+        "S": [10, 11]
+      },
+      "colheita_meses": { "CO": [4, 7], "SE": [3, 6], "NE": [7, 9], "N": [6, 8] },
+      "riscos": ["chuva na colheita (qualidade da pluma)", "bicudo-do-algodoeiro"],
+      "clima_ideal": { "precip_mm_min": 50, "precip_mm_max": 150, "temp_min_c": 18, "temp_max_c": 34 },
+      "lua_tradicao": "qualquer",
+      "produtividade": { "valor": 170, "unidade": "@/ha" },
+      "preco_ref": 120,
+      "custos_ref_ha": { "sementes": 1100, "fertilizantes": 2200, "defensivos": 4200, "manejo": 1500, "total": 9000 }
+    },
+    {
+      "slug": "trigo",
+      "nome": "Trigo",
+      "grupo": "Grãos",
+      "ciclo_dias": [110, 130],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [],
+        "CO": [4, 5],
+        "SE": [4, 5],
+        "S": [4, 7]
+      },
+      "colheita_meses": { "S": [9, 11], "SE": [8, 10], "CO": [8, 10] },
+      "riscos": ["geada na floração", "giberela (chuva na floração)"],
+      "clima_ideal": { "precip_mm_min": 40, "precip_mm_max": 140, "temp_min_c": 8, "temp_max_c": 25 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 50, "unidade": "sacas/ha" },
+      "preco_ref": 78,
+      "custos_ref_ha": { "sementes": 550, "fertilizantes": 1100, "defensivos": 850, "manejo": 700, "total": 3200 }
+    },
+    {
+      "slug": "cafe",
+      "nome": "Café arábica",
+      "grupo": "Perenes",
+      "ciclo_dias": null,
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [11, 12],
+        "CO": [10, 12],
+        "SE": [10, 12],
+        "S": []
+      },
+      "colheita_meses": { "CO": [5, 9], "SE": [5, 9], "NE": [5, 9] },
+      "riscos": ["geada (Sul/Sudeste)", "seca prolongada", "ferrugem"],
+      "clima_ideal": { "precip_mm_min": 100, "precip_mm_max": 220, "temp_min_c": 15, "temp_max_c": 28 },
+      "lua_tradicao": "crescente",
+      "obs": "Colheita principal entre maio e setembro; florada principal com as primeiras chuvas (set/nov).",
+      "produtividade": { "valor": 27, "unidade": "sacas/ha" },
+      "preco_ref": 820,
+      "custos_ref_ha": { "sementes_mudas": 2200, "fertilizantes": 2400, "defensivos": 1600, "manejo": 1800, "total": 8000 }
+    },
+    {
+      "slug": "cana",
+      "nome": "Cana-de-açúcar",
+      "grupo": "Perenes",
+      "ciclo_dias": null,
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [6, 12],
+        "NE": [6, 12],
+        "CO": [10, 3],
+        "SE": [10, 3],
+        "S": [10, 3]
+      },
+      "colheita_meses": { "CO": [5, 11], "SE": [5, 11], "NE": [9, 3], "N": [9, 3] },
+      "riscos": ["geada (Sul)", "seca no desenvolvimento", "broca-da-cana"],
+      "clima_ideal": { "precip_mm_min": 90, "precip_mm_max": 250, "temp_min_c": 16, "temp_max_c": 33 },
+      "lua_tradicao": "qualquer",
+      "obs": "Ciclo 12-18 meses (cana-soca); corte concentrado na safra (maio-novembro no centro-sul).",
+      "produtividade": { "valor": 80, "unidade": "t/ha" },
+      "preco_ref": 150,
+      "custos_ref_ha": { "mudas": 1200, "fertilizantes": 1800, "defensivos": 900, "manejo": 1600, "total": 5500 }
+    },
+    {
+      "slug": "mandioca",
+      "nome": "Mandioca",
+      "grupo": "Raízes e tubérculos",
+      "ciclo_dias": [240, 540],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [10, 12],
+        "NE": [10, 12],
+        "CO": [9, 11],
+        "SE": [9, 11],
+        "S": [8, 10]
+      },
+      "colheita_meses": { "N": [12, 12], "NE": [12, 12], "CO": [12, 12], "SE": [12, 12], "S": [12, 12] },
+      "riscos": ["podridão de raiz", "excesso de chuva na colheita"],
+      "clima_ideal": { "precip_mm_min": 80, "precip_mm_max": 200, "temp_min_c": 18, "temp_max_c": 32 },
+      "lua_tradicao": "minguante",
+      "obs": "Colheita 10-18 meses após o plantio; evitar colheita em solo encharcado.",
+      "produtividade": { "valor": 25, "unidade": "t/ha" },
+      "preco_ref": 520,
+      "custos_ref_ha": { "manivas": 600, "fertilizantes": 700, "defensivos": 300, "manejo": 900, "total": 2500 }
+    },
+    {
+      "slug": "batata",
+      "nome": "Batata",
+      "grupo": "Raízes e tubérculos",
+      "ciclo_dias": [90, 120],
+      "saca_kg": 50,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [5, 7],
+        "CO": [5, 7],
+        "SE": [5, 8],
+        "S": [8, 2]
+      },
+      "colheita_meses": { "S": [11, 6], "SE": [8, 12], "CO": [8, 11], "NE": [8, 11] },
+      "riscos": ["geada", "requeima (chuva + calor)", "excesso de chuva na colheita"],
+      "clima_ideal": { "precip_mm_min": 60, "precip_mm_max": 160, "temp_min_c": 10, "temp_max_c": 26 },
+      "lua_tradicao": "minguante",
+      "produtividade": { "valor": 30, "unidade": "t/ha" },
+      "preco_ref": 2300,
+      "custos_ref_ha": { "sementes": 6500, "fertilizantes": 5000, "defensivos": 4000, "manejo": 2500, "total": 18000 }
+    },
+    {
+      "slug": "cebola",
+      "nome": "Cebola",
+      "grupo": "Hortaliças",
+      "ciclo_dias": [120, 150],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [5, 7],
+        "CO": [5, 7],
+        "SE": [3, 6],
+        "S": [5, 7]
+      },
+      "colheita_meses": { "S": [10, 12], "SE": [8, 11], "NE": [10, 12], "CO": [10, 12] },
+      "riscos": ["excesso de chuva (doenças)", "veranico", "trips"],
+      "clima_ideal": { "precip_mm_min": 50, "precip_mm_max": 150, "temp_min_c": 10, "temp_max_c": 28 },
+      "lua_tradicao": "minguante",
+      "produtividade": { "valor": 30, "unidade": "t/ha" },
+      "preco_ref": 2200,
+      "custos_ref_ha": { "sementes_mudas": 3500, "fertilizantes": 4200, "defensivos": 3800, "manejo": 3500, "total": 15000 }
+    },
+    {
+      "slug": "tomate",
+      "nome": "Tomate (mesa)",
+      "grupo": "Hortaliças",
+      "ciclo_dias": [100, 120],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [5, 7],
+        "NE": [5, 7],
+        "CO": [4, 6],
+        "SE": [2, 3],
+        "S": [2, 3]
+      },
+      "colheita_meses": { "SE": [6, 8], "S": [6, 8], "NE": [8, 10], "CO": [8, 10] },
+      "riscos": ["vira-cabeça", "seca", "granizo (Sul)"],
+      "clima_ideal": { "precip_mm_min": 60, "precip_mm_max": 150, "temp_min_c": 14, "temp_max_c": 30 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 80, "unidade": "t/ha" },
+      "preco_ref": 3500,
+      "custos_ref_ha": { "mudas": 9000, "fertilizantes": 9000, "defensivos": 9000, "manejo": 5000, "total": 32000 }
+    },
+    {
+      "slug": "alface",
+      "nome": "Alface",
+      "grupo": "Hortaliças",
+      "ciclo_dias": [45, 60],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [4, 9],
+        "NE": [4, 9],
+        "CO": [4, 9],
+        "SE": [3, 10],
+        "S": [8, 4]
+      },
+      "colheita_meses": { "SE": [4, 12], "S": [10, 6], "NE": [6, 11], "CO": [6, 11], "N": [6, 11] },
+      "riscos": ["excesso de chuva (queima de borda)", "calor intenso (pendoamento)"],
+      "clima_ideal": { "precip_mm_min": 40, "precip_mm_max": 140, "temp_min_c": 8, "temp_max_c": 26 },
+      "lua_tradicao": "crescente",
+      "obs": "Cultivo contínuo com escalonamento; preferir épocas mais secas no Norte/Nordeste.",
+      "produtividade": { "valor": 60000, "unidade": "pés/ha" },
+      "preco_ref": 1.5,
+      "custos_ref_ha": { "sementes_mudas": 3500, "fertilizantes": 3500, "defensivos": 1800, "manejo": 3200, "total": 12000 }
+    },
+    {
+      "slug": "morango",
+      "nome": "Morango",
+      "grupo": "Frutas",
+      "ciclo_dias": [180, 240],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [],
+        "CO": [3, 4],
+        "SE": [2, 4],
+        "S": [3, 4]
+      },
+      "colheita_meses": { "S": [5, 12], "SE": [5, 12], "CO": [5, 12] },
+      "riscos": ["chuva na colheita (podridão)", "geada", "ácaros"],
+      "clima_ideal": { "precip_mm_min": 50, "precip_mm_max": 140, "temp_min_c": 8, "temp_max_c": 26 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 30, "unidade": "t/ha" },
+      "preco_ref": 12000,
+      "custos_ref_ha": { "mudas": 20000, "fertilizantes": 10000, "defensivos": 8000, "manejo": 7000, "total": 45000 }
+    },
+    {
+      "slug": "uva",
+      "nome": "Uva (mesa)",
+      "grupo": "Frutas",
+      "ciclo_dias": [120, 180],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [11, 12],
+        "CO": [11, 12],
+        "SE": [8, 10],
+        "S": [8, 10]
+      },
+      "colheita_meses": { "NE": [5, 12], "CO": [5, 12], "SE": [12, 2], "S": [12, 2] },
+      "riscos": ["chuva na maturação (rachadura)", "míldio", "geada (Sul)"],
+      "clima_ideal": { "precip_mm_min": 50, "precip_mm_max": 140, "temp_min_c": 12, "temp_max_c": 32 },
+      "lua_tradicao": "minguante",
+      "obs": "Vale do São Francisco: até 2 safras/ano com irrigação e podas programadas.",
+      "produtividade": { "valor": 25, "unidade": "t/ha" },
+      "preco_ref": 7000,
+      "custos_ref_ha": { "mudas": 6000, "fertilizantes": 6000, "defensivos": 5000, "manejo": 5000, "total": 22000 }
+    },
+    {
+      "slug": "banana",
+      "nome": "Banana",
+      "grupo": "Frutas",
+      "ciclo_dias": [300, 420],
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [9, 3],
+        "NE": [9, 3],
+        "CO": [9, 11],
+        "SE": [9, 11],
+        "S": [9, 11]
+      },
+      "colheita_meses": { "N": [12, 12], "NE": [12, 12], "CO": [12, 12], "SE": [12, 12], "S": [12, 12] },
+      "riscos": ["vento forte", "sigatoka (chuva)", "moko"],
+      "clima_ideal": { "precip_mm_min": 100, "precip_mm_max": 280, "temp_min_c": 18, "temp_max_c": 32 },
+      "lua_tradicao": "crescente",
+      "obs": "Produção contínua durante o ano; colheita 10-14 meses após o plantio.",
+      "produtividade": { "valor": 25, "unidade": "t/ha" },
+      "preco_ref": 2500,
+      "custos_ref_ha": { "mudas": 2500, "fertilizantes": 2500, "defensivos": 1500, "manejo": 2500, "total": 9000 }
+    },
+    {
+      "slug": "laranja",
+      "nome": "Laranja",
+      "grupo": "Frutas",
+      "ciclo_dias": null,
+      "saca_kg": 40.8,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [11, 1],
+        "CO": [10, 12],
+        "SE": [10, 12],
+        "S": [10, 12]
+      },
+      "colheita_meses": { "SE": [5, 2], "CO": [5, 2], "NE": [6, 1] },
+      "riscos": ["greening (HLB)", "seca", "geada (Sul)"],
+      "clima_ideal": { "precip_mm_min": 90, "precip_mm_max": 220, "temp_min_c": 12, "temp_max_c": 32 },
+      "lua_tradicao": "qualquer",
+      "obs": "Produção de 3-5 anos pós-plantio; colheita concentrada entre maio e fevereiro no cinturão citrícola paulista.",
+      "produtividade": { "valor": 350, "unidade": "caixas(40,8kg)/ha" },
+      "preco_ref": 36,
+      "custos_ref_ha": { "mudas": 1800, "fertilizantes": 2200, "defensivos": 1600, "manejo": 1400, "total": 7000 }
+    },
+    {
+      "slug": "sorgo",
+      "nome": "Sorgo granífero",
+      "grupo": "Grãos",
+      "ciclo_dias": [90, 120],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [1, 3],
+        "NE": [2, 4],
+        "CO": [1, 3],
+        "SE": [1, 3],
+        "S": [10, 12]
+      },
+      "colheita_meses": { "CO": [4, 7], "SE": [4, 7], "S": [1, 4], "NE": [6, 8], "N": [4, 7] },
+      "riscos": ["geada no Sul", "seca (menos sensível que milho)"],
+      "clima_ideal": { "precip_mm_min": 40, "precip_mm_max": 140, "temp_min_c": 14, "temp_max_c": 34 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 90, "unidade": "sacas/ha" },
+      "preco_ref": 55,
+      "custos_ref_ha": { "sementes": 600, "fertilizantes": 1000, "defensivos": 700, "manejo": 700, "total": 3000 }
+    },
+    {
+      "slug": "girassol",
+      "nome": "Girassol",
+      "grupo": "Grãos",
+      "ciclo_dias": [90, 120],
+      "saca_kg": 60,
+      "janelas_plantio": {
+        "N": [],
+        "NE": [3, 5],
+        "CO": [2, 3],
+        "SE": [2, 3],
+        "S": [8, 9]
+      },
+      "colheita_meses": { "CO": [5, 7], "SE": [5, 7], "S": [12, 2], "NE": [7, 9] },
+      "riscos": ["geada", "chuva na floração (doenças)"],
+      "clima_ideal": { "precip_mm_min": 50, "precip_mm_max": 140, "temp_min_c": 12, "temp_max_c": 32 },
+      "lua_tradicao": "crescente",
+      "produtividade": { "valor": 25, "unidade": "sacas/ha" },
+      "preco_ref": 95,
+      "custos_ref_ha": { "sementes": 550, "fertilizantes": 950, "defensivos": 650, "manejo": 650, "total": 2800 }
+    },
+    {
+      "slug": "amendoim",
+      "nome": "Amendoim",
+      "grupo": "Grãos",
+      "ciclo_dias": [100, 140],
+      "saca_kg": 25,
+      "janelas_plantio": {
+        "N": [11, 12],
+        "NE": [11, 12],
+        "CO": [10, 12],
+        "SE": [10, 12],
+        "S": [10, 12]
+      },
+      "colheita_meses": { "SE": [2, 5], "CO": [2, 5], "NE": [2, 5], "S": [2, 5], "N": [2, 5] },
+      "riscos": ["excesso de chuva na colheita (apodrecimento das vagens)", "seca na floração"],
+      "clima_ideal": { "precip_mm_min": 60, "precip_mm_max": 160, "temp_min_c": 16, "temp_max_c": 32 },
+      "lua_tradicao": "minguante",
+      "produtividade": { "valor": 160, "unidade": "sacas/ha" },
+      "preco_ref": 26,
+      "custos_ref_ha": { "sementes": 900, "fertilizantes": 1100, "defensivos": 900, "manejo": 900, "total": 3800 }
+    },
+    {
+      "slug": "cacau",
+      "nome": "Cacau",
+      "grupo": "Perenes",
+      "ciclo_dias": null,
+      "saca_kg": null,
+      "janelas_plantio": {
+        "N": [10, 12],
+        "NE": [10, 12],
+        "CO": [],
+        "SE": [],
+        "S": []
+      },
+      "colheita_meses": { "N": [5, 9], "NE": [5, 9] },
+      "riscos": ["vassoura-de-bruxa", "excesso de chuva na colheita e secagem"],
+      "clima_ideal": { "precip_mm_min": 120, "precip_mm_max": 300, "temp_min_c": 18, "temp_max_c": 32 },
+      "lua_tradicao": "crescente",
+      "obs": "Ciclo 4-5 anos até produção plena; safra temporã (maio-set) e safra principal (out-jan).",
+      "produtividade": { "valor": 1.5, "unidade": "t/ha" },
+      "preco_ref": 18000,
+      "custos_ref_ha": { "mudas": 1200, "fertilizantes": 1200, "defensivos": 900, "manejo": 1200, "total": 4500 }
+    }
+  ]
+}

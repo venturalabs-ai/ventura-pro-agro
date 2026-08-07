@@ -1,0 +1,27 @@
+# Ambiente Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Caches e ferramentas
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Dados de runtime gerados localmente
+runtime/
+
+# Configuração e segredos
+.env
+.env.local
+
+# Frontend construído (gerado a partir de fontes externas)
+frontend/dist/
+
+# Sistema
+.DS_Store
+Thumbs.db

@@ -1,0 +1,191 @@
+[
+ {
+  "uf": "AC",
+  "ibge": 12,
+  "nome": "Acre",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "AL",
+  "ibge": 27,
+  "nome": "Alagoas",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "AM",
+  "ibge": 13,
+  "nome": "Amazonas",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "AP",
+  "ibge": 16,
+  "nome": "Amapá",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "BA",
+  "ibge": 29,
+  "nome": "Bahia",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "CE",
+  "ibge": 23,
+  "nome": "Ceará",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "DF",
+  "ibge": 53,
+  "nome": "Distrito Federal",
+  "regiao": "CO",
+  "regiao_nome": "Centro-Oeste"
+ },
+ {
+  "uf": "ES",
+  "ibge": 32,
+  "nome": "Espírito Santo",
+  "regiao": "SE",
+  "regiao_nome": "Sudeste"
+ },
+ {
+  "uf": "GO",
+  "ibge": 52,
+  "nome": "Goiás",
+  "regiao": "CO",
+  "regiao_nome": "Centro-Oeste"
+ },
+ {
+  "uf": "MA",
+  "ibge": 21,
+  "nome": "Maranhão",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "MG",
+  "ibge": 31,
+  "nome": "Minas Gerais",
+  "regiao": "SE",
+  "regiao_nome": "Sudeste"
+ },
+ {
+  "uf": "MS",
+  "ibge": 50,
+  "nome": "Mato Grosso do Sul",
+  "regiao": "CO",
+  "regiao_nome": "Centro-Oeste"
+ },
+ {
+  "uf": "MT",
+  "ibge": 51,
+  "nome": "Mato Grosso",
+  "regiao": "CO",
+  "regiao_nome": "Centro-Oeste"
+ },
+ {
+  "uf": "PA",
+  "ibge": 15,
+  "nome": "Pará",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "PB",
+  "ibge": 25,
+  "nome": "Paraíba",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "PE",
+  "ibge": 26,
+  "nome": "Pernambuco",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "PI",
+  "ibge": 22,
+  "nome": "Piauí",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "PR",
+  "ibge": 41,
+  "nome": "Paraná",
+  "regiao": "S",
+  "regiao_nome": "Sul"
+ },
+ {
+  "uf": "RJ",
+  "ibge": 33,
+  "nome": "Rio de Janeiro",
+  "regiao": "SE",
+  "regiao_nome": "Sudeste"
+ },
+ {
+  "uf": "RN",
+  "ibge": 24,
+  "nome": "Rio Grande do Norte",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "RO",
+  "ibge": 11,
+  "nome": "Rondônia",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "RR",
+  "ibge": 14,
+  "nome": "Roraima",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ },
+ {
+  "uf": "RS",
+  "ibge": 43,
+  "nome": "Rio Grande do Sul",
+  "regiao": "S",
+  "regiao_nome": "Sul"
+ },
+ {
+  "uf": "SC",
+  "ibge": 42,
+  "nome": "Santa Catarina",
+  "regiao": "S",
+  "regiao_nome": "Sul"
+ },
+ {
+  "uf": "SE",
+  "ibge": 28,
+  "nome": "Sergipe",
+  "regiao": "NE",
+  "regiao_nome": "Nordeste"
+ },
+ {
+  "uf": "SP",
+  "ibge": 35,
+  "nome": "São Paulo",
+  "regiao": "SE",
+  "regiao_nome": "Sudeste"
+ },
+ {
+  "uf": "TO",
+  "ibge": 17,
+  "nome": "Tocantins",
+  "regiao": "N",
+  "regiao_nome": "Norte"
+ }
+]
