@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   quality:
-    name: Lint and tests
+    name: Lint, tests, coverage and security
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -41,5 +41,36 @@ jobs:
       - name: Ruff
         run: ruff check app tests
 
-      - name: Pytest
-        run: pytest -q
+      - name: Pytest with coverage gate
+        run: pytest -q --cov=app --cov-branch --cov-report=term-missing --cov-report=xml
+
+      - name: Bandit
+        run: bandit -q -r app
+
+      - name: Dependency audit
+        run: pip-audit
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-xml
+          path: backend/coverage.xml
+          if-no-files-found: error
+
+  sbom:
+    name: Generate SBOM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate SPDX SBOM
+        uses: anchore/sbom-action@v0
+        with:
+          path: .
+          format: spdx-json
+          output-file: sbom.spdx.json
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-spdx
+          path: sbom.spdx.json
+          if-no-files-found: error
