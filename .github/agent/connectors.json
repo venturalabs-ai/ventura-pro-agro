@@ -22,7 +22,7 @@
     "agro-municipio-query": ["ibge","postgresql","redis","github","sentry","python"],
     "zarc-window": ["mapa-zarc","ibge","postgresql","github","sentry","python"],
     "clima-lua-mare": ["inmet","nasa-power","filesystem","postgresql","github","python"],
-    "crop-cost": ["postgresql","filesystem","python","github","openai","grafana"],
+    "custo-safra": ["postgresql","filesystem","python","github","openai","grafana"],
     "agro-api-contract": ["github","postgresql","ibge","mapa-zarc","sentry","docker"],
     "agro-data-source": ["ibge","mapa-zarc","inmet","nasa-power","postgresql","github"],
     "agro-report": ["postgresql","ibge","mapa-zarc","inmet","openai","filesystem"]
