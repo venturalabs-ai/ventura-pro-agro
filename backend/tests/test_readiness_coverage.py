@@ -84,8 +84,7 @@ async def test_api_routes_success_and_errors(monkeypatch):
 
 @pytest.mark.asyncio
 async def test_db_roundtrip(tmp_path: Path, monkeypatch):
-    path = tmp_path / "ventura-test.db"
-    monkeypatch.setattr(db.settings, "db_path", str(path))
+    monkeypatch.setattr(db.settings, "runtime_dir", tmp_path)
 
     assert db.get_setting("missing", "fallback") == "fallback"
     db.set_setting("theme", {"dark": True})
