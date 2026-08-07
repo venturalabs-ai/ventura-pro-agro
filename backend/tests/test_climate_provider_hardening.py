@@ -48,7 +48,9 @@ def install_pool(monkeypatch: pytest.MonkeyPatch, module, client: FakeClient):
 
 
 def configure_cache(monkeypatch: pytest.MonkeyPatch, module, tmp_path: Path):
-    monkeypatch.setattr(module.settings, "cache_dir", tmp_path)
+    # Pydantic BaseModel intercepts setattr before a property setter. Override the
+    # declared PrivateAttr instead so every test uses an isolated cache directory.
+    monkeypatch.setattr(module.settings, "_cache_dir_override", tmp_path)
     if module is climate:
         monkeypatch.setattr(module.settings, "cache_forecast_ttl", 3600)
         monkeypatch.setattr(module.settings, "cache_history_ttl", 3600)
