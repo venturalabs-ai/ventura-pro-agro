@@ -1,0 +1,15 @@
+name: Ventura Production Standard
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  standard:
+    uses: venturalabs-ai/ventura.build/.github/workflows/repo-standard.yml@main
