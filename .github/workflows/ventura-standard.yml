@@ -12,4 +12,4 @@ permissions:
 
 jobs:
   standard:
-    uses: venturalabs-ai/ventura.build/.github/workflows/repo-standard.yml@main
+    uses: venturalabs-ai/ventura.build/.github/workflows/repo-standard.yml@7bd50a9ac5dd8f2e0937958ceffa10736302b273
