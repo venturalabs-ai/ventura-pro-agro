@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate SemVer tag and project version
+        shell: bash
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [[ ! "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid SemVer tag: $TAG" >&2
+            exit 1
+          fi
+          VERSION=$(python - <<'PY'
+          import tomllib
+          with open('backend/pyproject.toml','rb') as f:
+              print(tomllib.load(f)['project']['version'])
+          PY
+          )
+          test "$TAG" = "v$VERSION" || { echo "Tag $TAG does not match project version $VERSION" >&2; exit 1; }
+      - name: Create source release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
