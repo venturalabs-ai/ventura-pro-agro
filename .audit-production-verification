@@ -1,0 +1,4 @@
+Verification marker for hardened production gates.
+Date: 2026-08-07
+Scope: CI, security, climate fallbacks, cache isolation, SBOM, data contracts and lineage.
+Do not merge; audit evidence only.
