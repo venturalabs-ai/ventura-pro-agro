@@ -33,7 +33,7 @@ class ClimateDailyContract(StrictContract):
             raise ValueError("temperature_max_c outside supported range")
         return value
 
-    def validate_cross_fields(self) -> "ClimateDailyContract":
+    def validate_cross_fields(self) -> ClimateDailyContract:
         if self.temperature_min_c > self.temperature_max_c:
             raise ValueError("temperature_min_c must be <= temperature_max_c")
         return self
@@ -49,7 +49,7 @@ class ZarcWindowContract(StrictContract):
     source_document: str = Field(min_length=1)
     source_version: str = Field(min_length=1)
 
-    def validate_cross_fields(self) -> "ZarcWindowContract":
+    def validate_cross_fields(self) -> ZarcWindowContract:
         if self.start_date > self.end_date:
             raise ValueError("start_date must be <= end_date")
         return self
