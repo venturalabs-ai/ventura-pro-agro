@@ -1,4 +1,4 @@
-name: Ventura Production Standard
+name: Ventura Repository Security Baseline
 
 on:
   push:
