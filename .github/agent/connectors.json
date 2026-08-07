@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "runtime_standard": "venturalabs-ai/ventura.build/AGENT_RUNTIME_STANDARD.md",
+  "max_active_connectors_per_skill": 6,
+  "defaults": {"mode":"read-only","human_approval_for":["external-write","delete","publish","secrets","financial-commitment"]},
+  "catalog": {
+    "github": {"trust":"official","purpose":"repository code issues PRs Actions and provenance"},
+    "ibge": {"trust":"native","purpose":"official municipality UF and IBGE identifiers"},
+    "mapa-zarc": {"trust":"native","purpose":"official agricultural zoning and planting-window references"},
+    "inmet": {"trust":"native","purpose":"official Brazilian meteorological observations and climate context"},
+    "nasa-power": {"trust":"native","purpose":"agroclimatology and solar meteorological reference data"},
+    "postgresql": {"trust":"native","purpose":"domain records provenance costs and durable state"},
+    "redis": {"trust":"native","purpose":"cache rate limits and short-lived query state"},
+    "openai": {"trust":"native","purpose":"structured synthesis extraction and explanation with source boundaries"},
+    "sentry": {"trust":"official","purpose":"errors traces releases and data-adapter failures"},
+    "grafana": {"trust":"official","purpose":"API latency data freshness quality and operational dashboards"},
+    "docker": {"trust":"official","purpose":"reproducible backend and data-service runtime"},
+    "filesystem": {"trust":"local","purpose":"bounded access to fixtures official snapshots reports and tests"},
+    "python": {"trust":"local","purpose":"deterministic agronomic calculations data validation and tests"}
+  },
+  "routes": {
+    "agro-municipio-query": ["ibge","postgresql","redis","github","sentry","python"],
+    "zarc-window": ["mapa-zarc","ibge","postgresql","github","sentry","python"],
+    "clima-lua-mare": ["inmet","nasa-power","filesystem","postgresql","github","python"],
+    "crop-cost": ["postgresql","filesystem","python","github","openai","grafana"],
+    "agro-api-contract": ["github","postgresql","ibge","mapa-zarc","sentry","docker"],
+    "agro-data-source": ["ibge","mapa-zarc","inmet","nasa-power","postgresql","github"],
+    "agro-report": ["postgresql","ibge","mapa-zarc","inmet","openai","filesystem"]
+  }
+}
