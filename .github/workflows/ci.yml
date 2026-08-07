@@ -5,20 +5,37 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install
+          cache: pip
+
+      - name: Install dependencies
         run: |
-          pip install -U pip
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-          if [ -f pyproject.toml ]; then pip install -e ".[dev]" 2>/dev/null || pip install -e .; fi
+          if [ -f pyproject.toml ]; then pip install -e ".[dev]" 2>/dev/null || pip install -e . || true; fi
           pip install pytest
-      - name: Test
-        run: pytest -q || true
+
+      - name: Run tests
+        run: |
+          if ls tests 1>/dev/null 2>&1 || ls test_*.py 1>/dev/null 2>&1; then
+            pytest -q
+          else
+            echo "No tests directory found — skip"
+          fi
