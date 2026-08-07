@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from pydantic import PrivateAttr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # backend/ -> raiz do repositório
@@ -43,11 +44,17 @@ class Settings(BaseSettings):
     cache_history_ttl: int = 86400 * 30
     cache_ttempo_ttl: int = 1800
 
+    _cache_dir_override: Path | None = PrivateAttr(default=None)
+
     @property
     def cache_dir(self) -> Path:
-        d = self.runtime_dir / "cache"
+        d = self._cache_dir_override or (self.runtime_dir / "cache")
         d.mkdir(parents=True, exist_ok=True)
         return d
+
+    @cache_dir.setter
+    def cache_dir(self, value: Path) -> None:
+        self._cache_dir_override = Path(value)
 
     @property
     def db_path(self) -> Path:
