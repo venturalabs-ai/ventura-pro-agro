@@ -2,11 +2,10 @@
 
 from __future__ import annotations
 
-import json
 from contextlib import asynccontextmanager
 from datetime import date, datetime
 from pathlib import Path
-from unittest.mock import AsyncMock, MagicMock
+from unittest.mock import AsyncMock
 
 import pytest
 
@@ -89,7 +88,6 @@ async def test_open_meteo_forecast_network_normalization_and_cache(monkeypatch: 
     assert result[1]["weather"] == "Condição desconhecida"
     assert client.calls[0][1]["params"]["forecast_days"] == 2
 
-    # A second call must be served from the fresh on-disk cache.
     cached = await climate.fetch_forecast(-22.4, -41.8, days=2)
     assert cached == result
     assert len(client.calls) == 1
@@ -142,7 +140,7 @@ async def test_history_rejects_empty_provider_payload(monkeypatch: pytest.Monkey
         await climate.fetch_history(1, 2)
 
 
-def test_barometer_all_statuses(monkeypatch: pytest.MonkeyPatch):
+def test_barometer_all_statuses():
     assert climate.barometer_analysis([], None)["status"] == "sem dados"
 
     falling = [{"pressure_hpa": value} for value in [1015, 1014, 1013, 1012, 1011]]
@@ -203,7 +201,6 @@ async def test_climatempo_search_success_cache_and_error_paths(monkeypatch: pyte
     assert (await climatempo.search_city("Macae", "RJ"))["id"] == 2
     assert len(client.calls) == 1
 
-    # Different keys bypass the previous cache and exercise provider failures.
     install_pool(monkeypatch, climatempo, FakeClient([FakeResponse({}, status_code=500)]))
     assert await climatempo.search_city("Outra", "RJ") is None
     install_pool(monkeypatch, climatempo, FakeClient([FakeResponse(ValueError("bad json"))]))
