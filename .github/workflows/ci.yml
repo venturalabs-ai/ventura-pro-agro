@@ -18,16 +18,19 @@ jobs:
   quality:
     name: Lint, tests, coverage and security
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     defaults:
       run:
         working-directory: backend
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
           cache: pip
@@ -42,35 +45,41 @@ jobs:
         run: ruff check app tests
 
       - name: Pytest with coverage gate
-        run: pytest -q --cov=app --cov-branch --cov-report=term-missing --cov-report=xml
+        run: pytest -q --cov=app --cov-branch --cov-report=term-missing --cov-report=xml --cov-fail-under=80
 
       - name: Bandit
-        run: bandit -q -r app
+        run: bandit -q -r app -ll
 
       - name: Dependency audit
         run: pip-audit
 
       - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+        if: always() && hashFiles('backend/coverage.xml') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: coverage-xml
           path: backend/coverage.xml
           if-no-files-found: error
+          retention-days: 14
 
   sbom:
     name: Generate SBOM
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Generate SPDX SBOM
-        uses: anchore/sbom-action@v0
+        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
         with:
           path: .
           format: spdx-json
           output-file: sbom.spdx.json
       - name: Upload SBOM
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: sbom-spdx
           path: sbom.spdx.json
           if-no-files-found: error
+          retention-days: 14
