@@ -1,0 +1,2 @@
+Verification-only marker for hardened CI, security, climate-cache regression, Trivy and SBOM gates.
+Do not merge.
