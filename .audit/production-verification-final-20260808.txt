@@ -1,0 +1,2 @@
+Final verification marker after Node 24 setup-python migration.
+Do not merge.
