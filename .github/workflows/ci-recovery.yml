@@ -1,0 +1,32 @@
+name: Autonomous CI Recovery
+
+on:
+  workflow_run:
+    workflows: [CI, Repository Health, Ventura Autonomy Gate, Ventura Production Standard]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: write
+  issues: write
+
+jobs:
+  retry:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' && github.event.workflow_run.run_attempt < 2 }}
+    runs-on: ubuntu-latest
+    env: {GH_TOKEN: '${{ github.token }}', RUN_ID: '${{ github.event.workflow_run.id }}'}
+    steps:
+      - name: Retry failed jobs once
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}/rerun-failed-jobs"
+  report:
+    if: ${{ github.event.workflow_run.conclusion != 'success' && github.event.workflow_run.run_attempt >= 2 }}
+    runs-on: ubuntu-latest
+    env: {GH_TOKEN: '${{ github.token }}', WORKFLOW_NAME: '${{ github.event.workflow_run.name }}', RUN_URL: '${{ github.event.workflow_run.html_url }}'}
+    steps:
+      - name: Upsert persistent failure issue
+        shell: bash
+        run: |
+          set -euo pipefail
+          TITLE="[automation] ${WORKFLOW_NAME} failing"; BODY="Persistent workflow failure after bounded retry: ${RUN_URL}"
+          NUMBER=$(gh api "repos/${GITHUB_REPOSITORY}/issues?state=open&per_page=100" --jq ".[] | select(.title == \"${TITLE}\") | .number" | head -n1 || true)
+          if [ -n "$NUMBER" ]; then gh api "repos/${GITHUB_REPOSITORY}/issues/${NUMBER}/comments" --method POST -f body="$BODY" >/dev/null; else gh api "repos/${GITHUB_REPOSITORY}/issues" --method POST -f title="$TITLE" -f body="$BODY" >/dev/null; fi
