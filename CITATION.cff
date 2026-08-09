@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "ventura-pro-agro"
+type: software
+authors:
+  - family-names: "Mota de Oliveira"
+    given-names: "Wemerson"
+    alias: "Ventura"
+license: MIT
+repository-code: "https://github.com/venturalabs-ai/ventura-pro-agro"
+url: "https://github.com/venturalabs-ai/ventura-pro-agro"
+date-released: 2026-08-09
